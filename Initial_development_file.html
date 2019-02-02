@@ -90,12 +90,6 @@
 	    function smileScroll () {
 	    	// this.smile();
 	    };
-	    smileScroll.prototype.bind = function(obj) { 
-			var _this = this; 
-			return function() { 
-				_this.apply(obj,arguments);
-			} 
-		};
 		smileScroll.prototype = {
 			init : function () {
 				this.scrollType = "all";
@@ -103,6 +97,7 @@
 				this.hasRowBar = false;
 			},
 			smile : function (option) {
+				this.elementId = option.elementId;
 				this.scrollType = option.scrollType;
 				this.rowBar = document.createElement("div");
 				this.colBar = document.createElement("div");
@@ -120,7 +115,7 @@
 				this.wheelControl("mousewheel", this);
 			},
 			generate : function () { //初始化
-				this.oSmileScroll = document.getElementsByClassName('smile-scroll')[0]; //获取滚动内容最外层元素
+				this.oSmileScroll = document.getElementsByClassName(this.elementId)[0]; //获取滚动内容最外层元素
 				this.oSmileScroll.getElementsByClassName('row-bar')[0]===undefined ? this.hasRowBar = true : this.hasRowBar = false;
 				this.oSmileScroll.getElementsByClassName('col-bar')[0]===undefined ? this.hasColBar = true : this.hasColBar = false;
 				this.oSmileScroll.appendChild(this.rowBar);
@@ -289,7 +284,7 @@
 				});
 			}
 		}
-	// 将插件对象暴露给全局对象
+		// 将插件对象暴露给全局对象
 	    _global = (function(){ return this || (0, eval)('this'); }());
 	    if (typeof module !== "undefined" && module.exports) {
 	        module.exports = smileScroll;
@@ -303,6 +298,7 @@
 	window.onload = function () {
 		var smileScroll0 = new smileScroll();
 		smileScroll0.smile({
+			elementId : "smile-scroll",
 			viewHeight : "100%",
 			viewWidth : "100%",
 			scrollType : "all", //horizontal 水平滚动 , vertical 垂直滚动, all 垂直横向都显示;
