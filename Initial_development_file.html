@@ -277,6 +277,7 @@
 					_This.rowBarFocus = true;
 					_This.colBarFocus = false;
 					var event = event || window.event;
+					event.preventDefault();
 					_This.wheelRange = event.wheelDelta ? -event.wheelDelta / 120 : ( event.detail || 0 ) / 3;
 					_This.dotTop += _This.wheelRange*10; //10为滚轮速度
 					_This.limitRange();
