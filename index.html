@@ -83,10 +83,11 @@
 	</div>
 	<script>
 		window.onload = function () {
-			smileObject.smile({
-				viewHeight : 600,
-				viewWidth : 300,
-				response : false, // 响应（待开发）
+			var smileScroll0 = new smileScroll();
+			smileScroll0.smile({
+				elementId : "smile-scroll",
+				viewHeight : "100%",
+				viewWidth : "100%",
 				scrollType : "all", //horizontal 水平滚动 , vertical 垂直滚动, all 垂直横向都显示;
 			});
 		};
