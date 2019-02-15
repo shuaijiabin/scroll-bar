@@ -5,6 +5,7 @@
 	<title>面向对象-js原生滚动条</title>
 	<style>
 		/*文本样式 不放入插件内*/
+		html,body{ height: 100%; }
 		.content{
 			width: 400px;
 			margin: 0;
@@ -15,6 +16,70 @@
 			height: auto;
 			transition: all 0.3s cubic-bezier(0.12, 0.32, 0, 0.51);
 			text-align: justify;
+		}
+		/* 插件样式 */
+		.smile-scroll{
+			border: 1px solid #ddd;
+			position: relative;
+			overflow: hidden;
+		}
+		.smile-scroll:hover>.row-bar,.smile-scroll:hover>.col-bar{
+			opacity: 1;
+		}
+		.smile-scroll:active>.row-bar,.smile-scroll:active>.col-bar{
+			opacity: 1;
+		}
+		.smile-scroll>.row-bar,.smile-scroll>.col-bar{
+			display: none;
+			background-color: #ddd;
+			position: absolute;
+			border-radius: 10px;-moz-user-select: none; -khtml-user-select: none; user-select: none;onselectstart:none;
+			transition: all 0.3s ease;
+			opacity: 0;
+		}
+		.smile-scroll>.row-bar{
+			height: 100%;
+			width: 6px;
+			top: 0;
+			right: 0px;
+		}
+		.smile-scroll>.col-bar{
+			width: 100%;
+			height: 6px;
+			bottom: 0;
+			left: 0;
+		}
+		.smile-scroll>.row-bar>span,.smile-scroll>.col-bar>span{
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: #999;
+			border-radius: 10px;
+			transition: top 0.3s cubic-bezier(0.12, 0.32, 0, 0.51);
+			cursor: pointer;
+		}
+		.smile-scroll>.row-bar:hover>span,.smile-scroll>.col-bar:hover>span{
+			background-color: #666;
+		}
+		.smile-scroll>.row-bar:active>span,.smile-scroll>.col-bar:active>span{
+			background-color: #333;
+			z-index: 10;
+		}
+		.smile-scroll>.row-bar>span:after,.smile-scroll>.col-bar>span:after{
+			position: absolute;
+			top: 0;
+			content:"";
+		}
+		.smile-scroll>.row-bar>span:after{
+			right: 0;
+			width: 300%;
+			height: 100%;
+		}
+		.smile-scroll>.col-bar>span:after{
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 300%;
 		}
 	</style>
 	<script src="js/smileRoll.js"></script>	
@@ -86,8 +151,8 @@
 			var smileScroll0 = new smileScroll();
 			smileScroll0.smile({
 				elementId : "smile-scroll",
-				viewHeight : "100%",
-				viewWidth : "100%",
+				viewHeight : "400",
+				viewWidth : "300",
 				scrollType : "all", //horizontal 水平滚动 , vertical 垂直滚动, all 垂直横向都显示;
 			});
 		};

@@ -28,7 +28,7 @@
 			this.wheelControl("DOMMouseScroll", this);
 			this.wheelControl("mousewheel", this);
 		},
-		generate : function () { //初始化
+		generate : function () {
 			this.oSmileScroll = document.getElementsByClassName(this.elementId)[0]; //获取滚动内容最外层元素
 			this.oSmileScroll.getElementsByClassName('row-bar')[0]===undefined ? this.hasRowBar = true : this.hasRowBar = false;
 			this.oSmileScroll.getElementsByClassName('col-bar')[0]===undefined ? this.hasColBar = true : this.hasColBar = false;
